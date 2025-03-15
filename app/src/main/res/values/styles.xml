@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.App" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">@color/verdeOscuro</item>
+        <item name="colorPrimaryVariant">@color/verdeClaro</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="android:statusBarColor">@color/verdeOscuro</item>
+        <item name="android:windowBackground">@color/verdeFondo</item>
+    </style>
+
+</resources>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "130978268720",
+    "project_id": "cumnrv",
+    "storage_bucket": "cumnrv.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130978268720:android:aeb39822cd551fb3548ff5",
+        "android_client_info": {
+          "package_name": "com.example.cumn_rv"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfVQ6RfktvowG_jfTSwxEOUB4rsoSej64"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

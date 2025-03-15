@@ -1,0 +1,91 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/header_text"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/verdeOscuro"
+        android:gravity="center"
+        android:text="PADEL COLLECTOR"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/contadorClicksText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clicks: 0"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/palasDesbloqueadasText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Palas desbloqueadas: 0"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnClick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hacer Click"
+            android:backgroundTint="@color/verdeOscuro"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom"
+        android:background="@color/verdeOscuro"
+        android:orientation="horizontal">
+        
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"/>
+
+        <ImageView
+            android:id="@+id/icon_pala"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_pala"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            app:tint="@android:color/black" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"/>
+
+        <ImageView
+            android:id="@+id/icon_mapa"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_map"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            app:tint="@android:color/black" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"/>
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

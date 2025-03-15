@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:elevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/imagenPala"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true"
+            android:contentDescription="Imagen de la pala"/>
+
+
+        <TextView
+            android:id="@+id/nombrePala"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre de la Pala"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingTop="8dp"/>
+
+        <TextView
+            android:id="@+id/descripcionPala"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descripción corta de la pala"
+            android:textSize="14sp"
+            android:paddingTop="4dp"/>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
