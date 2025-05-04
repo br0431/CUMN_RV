@@ -47,8 +47,8 @@ public class CollectionPalas extends AppCompatActivity {
                 .subscribe(response -> {
                     listaPalas.clear();
 
-                    if (response.getDocuments() != null) {
-                        for (Pala pala : response.getDocuments()) {
+                    if (response != null) {
+                        for (Pala pala : response) {
                             if (pala != null && pala.getNombre() != null && palasDesbloqueadas.contains(pala.getNombre())) {
                                 listaPalas.add(pala);
                             }
@@ -59,5 +59,4 @@ public class CollectionPalas extends AppCompatActivity {
                 }, throwable -> Log.e("Firestore", "❌ Error al obtener palas desbloqueadas", throwable));
     }
 }
-
 

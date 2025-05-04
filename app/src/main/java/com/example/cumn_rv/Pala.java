@@ -3,6 +3,8 @@ package com.example.cumn_rv;
 import com.google.gson.annotations.SerializedName;
 
 public class Pala {
+    @SerializedName("id")
+    private String id;
     @SerializedName("nombre")
     private String nombre;
 
@@ -28,6 +30,13 @@ public class Pala {
 
     public Long getClicksNecesarios() { return clicksNecesarios; }
     public void setClicksNecesarios(Long clicksNecesarios) { this.clicksNecesarios = clicksNecesarios; }
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }
 
 

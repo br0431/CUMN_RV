@@ -15,8 +15,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomappbar.BottomAppBar;
+
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -34,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         ImageView iconPala = findViewById(R.id.icon_pala);
         ImageView iconMapa = findViewById(R.id.icon_mapa);
         iconPala.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, CollectionPalas.class)));
-
         iconMapa.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, MapsActivity.class)));
 
         prefs = getSharedPreferences("PalaPrefs", MODE_PRIVATE);
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     Set<String> palasDesbloqueadas = prefs.getStringSet("collectedPalas", new HashSet<>());
                     Set<String> nuevasPalas = new HashSet<>(palasDesbloqueadas);
 
-                    for (Pala pala : response.getDocuments()) {
+                    for (Pala pala : response) {  // ✅ YA NO SE USA .getDocuments()
                         if (pala != null && pala.getNombre() != null) {
                             long clicksNecesarios = pala.getClicksNecesarios() != null ? pala.getClicksNecesarios() : Long.MAX_VALUE;
 
@@ -89,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
                     actualizarUI();
                 }, throwable -> Log.e("MainActivity", "❌ Error al obtener palas desde Firestore", throwable));
     }
+
     private void mostrarToastDesbloqueo(String nombrePala) {
         LayoutInflater inflater = getLayoutInflater();
         View layout = inflater.inflate(R.layout.toast_custom, findViewById(R.id.toast_text));
@@ -101,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         toast.setView(layout);
         toast.show();
     }
-
 }
+
 
 

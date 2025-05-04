@@ -1,6 +1,6 @@
 package com.example.cumn_rv.interfaces;
 
-import com.example.cumn_rv.FirestoreCaracteristica;
+import com.example.cumn_rv.Caracteristica;
 import com.example.cumn_rv.Pala;
 
 import java.util.List;
@@ -15,7 +15,7 @@ public interface FirestoreAPI {
     Single<List<Pala>> obtenerPalas();
 
     @GET("api/palas/{palaId}/caracteristicas/{nombrePala}")
-    Single<FirestoreCaracteristica> obtenerCaracteristicas(
+    Single<Caracteristica> obtenerCaracteristicas(
             @Path("palaId") String palaId,
             @Path("nombrePala") String nombrePala
     );

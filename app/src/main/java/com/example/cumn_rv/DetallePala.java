@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -46,8 +47,9 @@ public class DetallePala extends AppCompatActivity {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> {
-                    if (response.getDocuments() != null && !response.getDocuments().isEmpty()) {
-                        for (Pala pala : response.getDocuments()) {
+                    if (response != null && !response.isEmpty()) {
+                        for (int i = 0; i < response.size(); i++) {
+                            Pala pala = response.get(i);
                             if (pala != null && pala.getNombre() != null && pala.getNombre().equals(palaNombre)) {
                                 Log.d("Firestore", "✅ Detalles encontrados para la pala: " + palaNombre);
                                 nombrePala.setText(pala.getNombre());
@@ -59,7 +61,8 @@ public class DetallePala extends AppCompatActivity {
                                         .error(R.drawable.error_pala)
                                         .into(imagenPala);
 
-                                String palaId = response.getDocuments().indexOf(pala) + 1 + "";
+                                String palaId = pala.getId();
+
 
                                 Log.d("Firestore", "📌 Llamando a obtenerCaracteristicasPala con ID: " + palaId);
 
@@ -77,17 +80,16 @@ public class DetallePala extends AppCompatActivity {
         try {
             String nombrePalaEncoded = URLEncoder.encode(nombrePala, StandardCharsets.UTF_8.toString()).replace("+", "%20");
 
-            Log.d("Firestore", "📌 URL generada: https://firestore.googleapis.com/v1/projects/cumnrv/databases/(default)/documents/palas/"
-                    + palaId + "/caracteristicas/" + nombrePalaEncoded);
+            Log.d("Firestore", "📌 Llamando al endpoint Flask: /api/palas/" + palaId + "/caracteristicas/" + nombrePalaEncoded);
 
             RetrofitClient.getFirestoreAPI().obtenerCaracteristicas(palaId, nombrePalaEncoded)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(response -> {
-                        Log.d("Firestore", "📌 Respuesta cruda de Firestore: " + response.toString());
+                        Log.d("Firestore", "📌 Respuesta cruda de Flask: " + response.toString());
 
                         if (response == null) {
-                            Log.e("Firestore", "⚠️ Firestore devolvió una respuesta vacía.");
+                            Log.e("Firestore", "⚠️ La API devolvió una respuesta vacía.");
                             return;
                         }
 
@@ -104,7 +106,7 @@ public class DetallePala extends AppCompatActivity {
                             HttpException httpException = (HttpException) throwable;
                             int errorCode = httpException.code();
                             String errorBody = httpException.response().errorBody().string();
-                            Log.e("Firestore", "❌ Firestore devolvió un error HTTP " + errorCode + ": " + errorBody);
+                            Log.e("Firestore", "❌ Error HTTP " + errorCode + ": " + errorBody);
                         } else {
                             Log.e("Firestore", "❌ Error al obtener características de la pala", throwable);
                         }
@@ -113,7 +115,7 @@ public class DetallePala extends AppCompatActivity {
             Log.e("Firestore", "❌ Error al codificar la URL", e);
         }
     }
-
 }
+
 
 
