@@ -19,7 +19,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
-    private static final String BASE_URL = "https://firestore.googleapis.com/v1/";
+    private static final String BASE_URL = "https://api-pala-cumn.onrender.com";
 
     private static Retrofit retrofit;
 
