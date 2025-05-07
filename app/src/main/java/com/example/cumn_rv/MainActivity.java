@@ -17,7 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomappbar.BottomAppBar;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -67,14 +66,14 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("CheckResult")
     private void desbloquearPalaSiEsNecesario() {
-        RetrofitClient.getFirestoreAPI().obtenerPalas()
+        RetrofitClient.getPrivateFirestoreAPI().obtenerPalas()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> {
                     Set<String> palasDesbloqueadas = prefs.getStringSet("collectedPalas", new HashSet<>());
                     Set<String> nuevasPalas = new HashSet<>(palasDesbloqueadas);
 
-                    for (Pala pala : response) {  // ✅ YA NO SE USA .getDocuments()
+                    for (Pala pala : response) {
                         if (pala != null && pala.getNombre() != null) {
                             long clicksNecesarios = pala.getClicksNecesarios() != null ? pala.getClicksNecesarios() : Long.MAX_VALUE;
 

@@ -10,7 +10,6 @@ import com.bumptech.glide.Glide;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -43,7 +42,7 @@ public class DetallePala extends AppCompatActivity {
     private void obtenerDetallesPala(String palaNombre) {
         Log.d("Firestore", "🔍 Buscando detalles para la pala: " + palaNombre);
 
-        RetrofitClient.getFirestoreAPI().obtenerPalas()
+        RetrofitClient.getPrivateFirestoreAPI().obtenerPalas()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> {
@@ -78,11 +77,10 @@ public class DetallePala extends AppCompatActivity {
     @SuppressLint("CheckResult")
     private void obtenerCaracteristicasPala(String palaId, String nombrePala) {
         try {
-            String nombrePalaEncoded = URLEncoder.encode(nombrePala, StandardCharsets.UTF_8.toString()).replace("+", "%20");
 
-            Log.d("Firestore", "📌 Llamando al endpoint Flask: /api/palas/" + palaId + "/caracteristicas/" + nombrePalaEncoded);
+            Log.d("Firestore", "📌 Llamando al endpoint Flask: /api/palas/" + palaId + "/caracteristicas/" + nombrePala);
 
-            RetrofitClient.getFirestoreAPI().obtenerCaracteristicas(palaId, nombrePalaEncoded)
+            RetrofitClient.getPublicFirestoreAPI().obtenerCaracteristicas(palaId, nombrePala)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(response -> {
