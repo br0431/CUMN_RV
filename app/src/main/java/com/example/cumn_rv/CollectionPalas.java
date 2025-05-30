@@ -41,7 +41,7 @@ public class CollectionPalas extends AppCompatActivity {
     private void cargarPalasDesbloqueadas() {
         Set<String> palasDesbloqueadas = prefs.getStringSet("collectedPalas", new HashSet<>());
 
-        RetrofitClient.getPrivateFirestoreAPI().obtenerPalas()
+        RetrofitClient.getPublicFirestoreAPI().obtenerPalas()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> {

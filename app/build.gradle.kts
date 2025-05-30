@@ -53,6 +53,8 @@ dependencies {
     implementation ("androidx.recyclerview:recyclerview:1.2.1")
     implementation ("com.google.android.gms:play-services-maps:18.1.0")
     implementation ("androidx.core:core:1.12.0")
+    implementation ("com.google.android.gms:play-services-location:21.0.1")
+
 
 
 

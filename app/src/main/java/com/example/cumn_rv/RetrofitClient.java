@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient {
 
     private static final String BASE_URL_PUBLICA = "https://cumn-api.onrender.com/";
-    private static final String BASE_URL_PRIVADA = "http://192.168.1.110:5000/";
+    //private static final String BASE_URL_PRIVADA = "http://192.168.1.110:5000/";
 
     private static Retrofit retrofitPublica;
     private static Retrofit retrofitPrivada;
@@ -28,7 +28,7 @@ public class RetrofitClient {
         return retrofitPublica.create(FirestoreAPI.class);
     }
 
-    public static FirestoreAPI getPrivateFirestoreAPI() {
+    /* public static FirestoreAPI getPrivateFirestoreAPI() {
         if (retrofitPrivada == null) {
             retrofitPrivada = new Retrofit.Builder()
                     .baseUrl(BASE_URL_PRIVADA)
@@ -38,7 +38,7 @@ public class RetrofitClient {
                     .build();
         }
         return retrofitPrivada.create(FirestoreAPI.class);
-    }
+    } */
 }
 
 

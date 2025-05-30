@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("CheckResult")
     private void desbloquearPalaSiEsNecesario() {
-        RetrofitClient.getPrivateFirestoreAPI().obtenerPalas()
+        RetrofitClient.getPublicFirestoreAPI().obtenerPalas()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> {

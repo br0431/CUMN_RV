@@ -8,9 +8,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.HttpException;
@@ -42,7 +39,7 @@ public class DetallePala extends AppCompatActivity {
     private void obtenerDetallesPala(String palaNombre) {
         Log.d("Firestore", "🔍 Buscando detalles para la pala: " + palaNombre);
 
-        RetrofitClient.getPrivateFirestoreAPI().obtenerPalas()
+        RetrofitClient.getPublicFirestoreAPI().obtenerPalas()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> {
