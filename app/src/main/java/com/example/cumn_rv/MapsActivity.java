@@ -29,7 +29,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private FusedLocationProviderClient fusedLocationClient;
 
-    // Clase auxiliar para guardar información de los clubes
     static class Club {
         String nombre;
         LatLng ubicacion;
